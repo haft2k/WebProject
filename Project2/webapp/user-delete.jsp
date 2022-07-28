@@ -33,32 +33,39 @@
 
  </nav>
 
- <table class="table table-bordered">
-  <thead>
-   <tr>
+ <form action="user-delete-save.jsp">
+  <table class="table table-bordered">
+   <thead>
+    <tr>
 
-    <th>ID</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Country</th>
-    <th>Actions</th>
-   </tr>
-  </thead>
+     <th>ID</th>
+     <th>Name</th>
+     <th>Email</th>
+     <th>Country</th>
+     <th>Actions</th>
+    </tr>
+   </thead>
 
-  <tbody>
-   <%
-   UserDAO userDao = new UserDAO();
-   int id = Integer.parseInt(request.getParameter("id"));
-   User user = userDao.selectUser(id);
-   %>
-   <tr>
-    <td><%=user.getId()%></td>
-    <td><%=user.getName()%></td>
-    <td><%=user.getEmail()%></td>
-    <td><%=user.getCountry()%></td>
-   </tr>
-  </tbody>
- </table>
+   <tbody>
+    <%
+    UserDAO userDao = new UserDAO();
+    for (User user : userDao.selectAllUsers()) {
+    %>
+    <tr>
+     <td><%=user.getId()%></td>
+     <td><%=user.getName()%></td>
+     <td><%=user.getEmail()%></td>
+     <td><%=user.getCountry()%></td>
+     <td><input type="checkbox" name="lstid"
+       value="<%=user.getId()%>"></td>
+    </tr>
+    <%
+    }
+    %>
+   </tbody>
+  </table>
+  <input type="submit" name="submit" value="submit" />
+ </form>
 
 </body>
 

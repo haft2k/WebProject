@@ -62,7 +62,7 @@ public class UserDAO {
 	public void insertUser(User u) {
 
 		try {
-			
+
 			/* Step 1: Establishing a Connection */
 			Connection connection = getConnection();
 
@@ -71,17 +71,18 @@ public class UserDAO {
 			preparedStatement.setString(1, u.getName());
 			preparedStatement.setString(2, u.getEmail());
 			preparedStatement.setString(3, u.getCountry());
-			
+
 			int rs = preparedStatement.executeUpdate();
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 	}
 
 	public User selectUser(int id) {
+
 		User user = new User();
-		
+
 		try {
 			/* Step 1: Establishing a Connection */
 			Connection connection = getConnection();
@@ -89,7 +90,7 @@ public class UserDAO {
 			/* Step 2: Create a statement using connection object */
 			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USERS_BY_ID);
 			preparedStatement.setInt(1, id);
-			
+
 			/* Step 3: Execute the query or update query */
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
@@ -97,11 +98,11 @@ public class UserDAO {
 				user.setName(rs.getString("name"));
 				user.setEmail(rs.getString("email"));
 				user.setCountry(rs.getString("country"));
-				
+
 			}
-			
+
 			return user;
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
