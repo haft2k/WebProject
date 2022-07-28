@@ -1,9 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+ pageEncoding="UTF-8"%>
 <%@ page import="net.javaguides.usermanagement.dao.UserDAO"%>
 <%@ page import="net.javaguides.usermanagement.model.User"%>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
- pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%> 
+CTYPE html>
 <html>
 
 <head>
@@ -13,9 +16,17 @@
  href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
  integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
  crossorigin="anonymous">
+ 
+<sql:setDataSource var="demo" driver="com.mysql.jdbc.Driver"
+ url="jdbc:mysql://localhost/demo" user="root" password="root" />
+
+<sql:query dataSource="${demo}" var="rs">  
+SELECT * from users;
+</sql:query>
 </head>
 
 <body>
+
  <nav class="navbar navbar-expand-lg navbar-dark"
   style="background-color: tomato;">
   <a class="navbar-brand" href="https://www.javaguides.net">User
@@ -29,9 +40,9 @@
    </ul>
   </div>
 
-  <div></div>
-
  </nav>
+
+
 
  <table class="table table-bordered">
   <thead>
@@ -46,17 +57,14 @@
   </thead>
 
   <tbody>
-   <%
-   UserDAO userDao = new UserDAO();
-   int id = Integer.parseInt(request.getParameter("id"));
-   User user = userDao.selectUser(id);
-   %>
-   <tr>
-    <td><%=user.getId()%></td>
-    <td><%=user.getName()%></td>
-    <td><%=user.getEmail()%></td>
-    <td><%=user.getCountry()%></td>
-   </tr>
+   <c:forEach var="row" items="${rs.rows }">
+    <tr>
+     <td><c:out value="${row.id }" /></td>
+     <td><c:out value="${row.name }" /></td>
+     <td><c:out value="${row.email }" /></td>
+     <td><c:out value="${row.country }" /></td>
+    </tr>
+   </c:forEach>
   </tbody>
  </table>
 
