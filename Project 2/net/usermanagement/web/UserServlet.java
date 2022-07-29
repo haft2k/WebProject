@@ -22,6 +22,7 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,6 +33,7 @@ import net.usermanagement.model.User;
 /**
  * Servlet implementation class UserServlet
  */
+@WebServlet("/")
 public class UserServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -50,7 +52,7 @@ public class UserServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet( HttpServletRequest request, HttpServletResponse response )
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	        throws ServletException, IOException {
 
 		String action = request.getServletPath();
@@ -84,13 +86,13 @@ public class UserServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost( HttpServletRequest request, HttpServletResponse response )
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	        throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
-	private void listUser( HttpServletRequest request, HttpServletResponse response )
+	private void listUser(HttpServletRequest request, HttpServletResponse response)
 	        throws SQLException, IOException, ServletException {
 		List<User> listUser = userDAO.selectAllUsers();
 
@@ -99,19 +101,20 @@ public class UserServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("user_list.jsp");
 		dispatcher.forward(request, response);
 	}
+
 	/*
 	 * new form for user input database
 	 */
-	private void showNewForm( HttpServletRequest request, HttpServletResponse response )
+	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
 	        throws SQLException, IOException, ServletException {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("user_list.jsp");
 		dispatcher.forward(request, response);
 	}
-	
+
 	/*
 	 * show form edit user exist
 	 */
-	private void showEditForm( HttpServletRequest request, HttpServletResponse response )
+	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 	        throws SQLException, IOException, ServletException {
 
 		int id = Integer.parseInt(request.getParameter("id"));
@@ -125,7 +128,7 @@ public class UserServlet extends HttpServlet {
 	/*
 	 * put new user to database
 	 */
-	private void insertUser( HttpServletRequest request, HttpServletResponse response )
+	private void insertUser(HttpServletRequest request, HttpServletResponse response)
 	        throws SQLException, IOException, ServletException {
 
 		String name = request.getParameter("name");
@@ -140,7 +143,7 @@ public class UserServlet extends HttpServlet {
 	/*
 	 * change information of user in database
 	 */
-	private void updateUser( HttpServletRequest request, HttpServletResponse response )
+	private void updateUser(HttpServletRequest request, HttpServletResponse response)
 	        throws SQLException, IOException, ServletException {
 
 		int id = Integer.parseInt(request.getParameter("id"));
@@ -156,9 +159,9 @@ public class UserServlet extends HttpServlet {
 	/*
 	 * delete user in database withd id
 	 */
-	private void deleteUser( HttpServletRequest request, HttpServletResponse response )
+	private void deleteUser(HttpServletRequest request, HttpServletResponse response)
 	        throws SQLException, IOException, ServletException {
-		
+
 		int id = Integer.parseInt(request.getParameter("id"));
 		userDAO.deleteUser(id);
 		response.sendRedirect("list");
