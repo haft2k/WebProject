@@ -11,8 +11,10 @@
 package net.todoapp.utils;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 /**
  *
@@ -48,7 +50,10 @@ public class JDBCUltils {
 		return connection;
 	}
 
-	public static void printSQLException(SQLException sqlEx) {
-		
+	public static void printSQLException( SQLException sqlEx ) {
+
 	}
+
+	public static Date getSQLDate( LocalDate date ) { return Date.valueOf(date); }
+
 }

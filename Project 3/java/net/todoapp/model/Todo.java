@@ -33,59 +33,28 @@ public class Todo {
 		this.targetDate = targetDate;
 	}
 
-	/**
-	 * @return the id
-	 */
 	public int getId() { return id; }
 
-	/**
-	 * @return the username
-	 */
+	public void setId( int id ) { this.id = id; }
+
 	public int getUsername() { return username; }
 
-	/**
-	 * @param username the username to set
-	 */
-	public void setUsername(int username) { this.username = username; }
+	public void setUsername( int username ) { this.username = username; }
 
-	/**
-	 * @return the title
-	 */
 	public String getTitle() { return title; }
 
-	/**
-	 * @param title the title to set
-	 */
-	public void setTitle(String title) { this.title = title; }
+	public void setTitle( String title ) { this.title = title; }
 
-	/**
-	 * @return the description
-	 */
 	public String getDescription() { return description; }
 
-	/**
-	 * @param description the description to set
-	 */
-	public void setDescription(String description) { this.description = description; }
+	public void setDescription( String description ) { this.description = description; }
 
-	/**
-	 * @return the is_done
-	 */
-	public boolean isStatus() { return is_done; }
+	public boolean getIs_done() { return is_done; }
 
-	/**
-	 * @param is_done the is_done to set
-	 */
-	public void setStatus(boolean is_done) { this.is_done = is_done; }
+	public void setIs_done( boolean is_done ) { this.is_done = is_done; }
 
-	/**
-	 * @return the targetDate
-	 */
 	public LocalDate getTargetDate() { return targetDate; }
 
-	/**
-	 * @param targetDate the targetDate to set
-	 */
-	public void setTargetDate(LocalDate targetDate) { this.targetDate = targetDate; }
+	public void setTargetDate( LocalDate targetDate ) { this.targetDate = targetDate; }
 
 }

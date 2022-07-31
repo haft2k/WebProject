@@ -24,7 +24,7 @@ import net.todoapp.utils.JDBCUltils;
 public class LoginDAO {
 	
 	public boolean checkLogin(LoginBean user) {
-		// Query set default cant result
+		// Query set default can't result
 		boolean status = false;
 		String SQL = "SELECT id, username FROM users WHERE username = ? AND password = ?";
 		

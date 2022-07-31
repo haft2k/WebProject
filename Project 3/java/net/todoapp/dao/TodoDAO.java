@@ -14,28 +14,20 @@ import java.util.List;
 
 import net.todoapp.model.Todo;
 
-
 /**
  *
  * @author falcon
  */
-public class TodoDAOImp implements TodoDAO {
+public interface TodoDAO {
 
-	@Override
-	public void insertTodo(Todo todo) {
-		String SQL = "INSERT";
-	}
+	public void insertTodo(Todo todo);
 
-	@Override
-	public Todo selectTodo() { return null; }
+	public Todo selectTodo(int id);
 
-	@Override
-	public List<Todo> selectAllTodo() { return null; }
+	public List<Todo> selectAllTodo();
 
-	@Override
-	public boolean deleteTodo(int id) { return false; }
+	public boolean deleteTodo(int id);
 
-	@Override
-	public boolean updateTodo(Todo todo) { return false; }
+	public boolean updateTodo(Todo todo);
 
 }
