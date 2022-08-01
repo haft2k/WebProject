@@ -8,7 +8,7 @@
  * disclose such Confidential Information and shall use it only in
  * accordance with the terms of the license agreement you entered into with GumBox
  */
-package net.todoapp.utils;
+package com.utils;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -20,14 +20,14 @@ import java.time.LocalDate;
  *
  * @author falcon
  */
-public class JDBCUltils {
+public class JDBCUtils {
 
 	private static String URL = "jdbc:mysql/localhost:3306/";
-	private static String DATABASE = "todoapp?useSSL=false";
+	private static String DATABASE = "example?useSSL=false";
 	private static String USERNAME = "root";
 	private static String PASSWORD = "root";
 
-	public JDBCUltils() {}
+	public JDBCUtils() {}
 
 	/*
 	 * Driver Connection to database
@@ -38,7 +38,7 @@ public class JDBCUltils {
 		Connection connection = null;
 
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			connection = DriverManager.getConnection(URL + DATABASE, USERNAME, PASSWORD);
 
 		} catch (SQLException e) {
