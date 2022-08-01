@@ -31,7 +31,9 @@ public class HibernateUtils {
 				// Hibernate settings equivalent to hibernate.cfg.xml properties
 				Properties setting = new Properties();
 				setting.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-				setting.put(Environment.URL, "jdbc:mysql://localhost:3306/example?useSSL=false");
+				setting.put(Environment.URL,
+				        "jdbc:mysql://localhost:3306/example?useSSL=false");
+				
 				setting.put(Environment.USER, "root");
 				setting.put(Environment.PASS, "root");
 				setting.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
@@ -41,7 +43,7 @@ public class HibernateUtils {
 
 				ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 				        .applySettings(configuration.getProperties()).build();
-				
+
 				return sessionFactory;
 			} catch (Exception e) {
 				// TODO: handle exception

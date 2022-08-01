@@ -11,10 +11,8 @@
 package com.utils;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 /**
  *
@@ -53,7 +51,5 @@ public class JDBCUtils {
 	public static void printSQLException( SQLException sqlEx ) {
 
 	}
-
-	public static Date getSQLDate( LocalDate date ) { return Date.valueOf(date); }
 
 }

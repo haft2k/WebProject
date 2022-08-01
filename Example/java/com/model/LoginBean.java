@@ -10,8 +10,6 @@
  */
 package com.model;
 
-import java.io.Serializable;
-
 /**
  *
  * @author falcon
