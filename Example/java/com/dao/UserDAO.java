@@ -8,26 +8,12 @@
  * disclose such Confidential Information and shall use it only in
  * accordance with the terms of the license agreement you entered into with GumBox
  */
-package net.todoapp.dao;
-
-import java.util.List;
-
-import net.todoapp.model.Todo;
+package com.dao;
 
 /**
  *
  * @author falcon
  */
-public interface TodoDAO {
-
-	public void insertTodo(Todo todo);
-
-	public Todo selectTodo(int id);
-
-	public List<Todo> selectAllTodo();
-
-	public boolean deleteTodo(int id);
-
-	public boolean updateTodo(Todo todo);
-
+public class UserDAO {
+	
 }
